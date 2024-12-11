@@ -1,0 +1,113 @@
+@startuml
+class Main {
+    +main(args: String[]): void
+}
+
+class UserInterface {
+    -scanner: Scanner
+    -storage: FoodStorage
+    -recipeBook: RecipeBook
+    -shoppingList: ShoppingList
+    +start(): void
+    +addGrocery(): void
+    +searchGrocery(): void
+    +removeGrocery(): void
+    +showGroceriesSortedAlphabetically(): void
+    +showExpiresSoon(): void
+    +showExpiredGroceriesAndWastedValue(): void
+    +showTotalValue(): void
+    +clearAllGroceries(): void
+    +saveFridgeData(): void
+    +addRecipe(): void
+    +showAllRecipes(): void
+    +generateShoppingList(): void
+    +suggestRecipes(): void
+    +showShoppingList(): void
+    +aboutApp(): void
+}
+
+class FoodStorage {
+    -groceries: List<Grocery>
+    +addGrocery(grocery: Grocery): void
+    +searchGrocery(name: String): Grocery
+    +removeGrocery(name: String, amount: double): boolean
+    +getGroceries(): List<Grocery>
+    +clearAllGroceries(): void
+    +saveToFile(): void
+    +loadFromFile(): void
+    +hasIngredients(recipe: Recipe): boolean
+    +convertUnits(amount: double, fromUnit: String, toUnit: String): double
+    +useIngredient(ingredient: Ingredient): void
+}
+
+class Grocery {
+    -name: String
+    -amount: double
+    -unit: String
+    -bestBeforeDate: Date
+    -pricePerUnit: double
+    +Grocery(name: String, amount: double, unit: String, bestBeforeDate: Date, pricePerUnit: double)
+    +getName(): String
+    +setName(name: String): void
+    +getAmount(): double
+    +setAmount(amount: double): void
+    +getUnit(): String
+    +setUnit(unit: String): void
+    +getBestBeforeDate(): Date
+    +setBestBeforeDate(bestBeforeDate: Date): void
+    +getPricePerUnit(): double
+    +setPricePerUnit(pricePerUnit: double): void
+    +calculateTotalValue(): double
+    +toString(): String
+}
+
+class RecipeBook {
+    -recipes: List<Recipe>
+    +addRecipe(recipe: Recipe): void
+    +suggestRecipes(storage: FoodStorage): List<Recipe>
+    +suggestPartialRecipes(storage: FoodStorage): List<Recipe>
+    +getRecipes(): List<Recipe>
+    +saveToFile(): void
+    +loadFromFile(): void
+}
+
+class Recipe {
+    -name: String
+    -ingredients: List<Ingredient>
+    -description: String
+    +Recipe(name: String)
+    +getName(): String
+    +addIngredient(ingredient: Ingredient): void
+    +getIngredients(): List<Ingredient>
+    +getDescription(): String
+    +setDescription(description: String): void
+    +toString(): String
+}
+
+class Ingredient {
+    -name: String
+    -amount: double
+    -unit: String
+    +Ingredient(name: String, amount: double, unit: String)
+    +getName(): String
+    +getAmount(): double
+    +getUnit(): String
+    +toString(): String
+}
+
+class ShoppingList {
+    -items: List<Ingredient>
+    +addItem(ingredient: Ingredient): void
+    +generateShoppingList(recipe: Recipe, storage: FoodStorage): void
+    +getItems(): List<Ingredient>
+}
+
+Main -> UserInterface
+UserInterface -> FoodStorage
+UserInterface -> RecipeBook
+UserInterface -> ShoppingList
+FoodStorage -> Grocery
+RecipeBook -> Recipe
+Recipe -> Ingredient
+ShoppingList -> Ingredient
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+start
+:User selects "Add a new grocery";
+:App prompts for grocery details;
+:User enters grocery details;
+:App validates input;
+if (Input is valid?) then (yes)
+    :App adds grocery to storage;
+    :App saves storage to file;
+else (no)
+    :App shows error message;
+endif
+stop
+@enduml

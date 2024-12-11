@@ -1,6 +1,11 @@
 package edu.ntnu.iir.bidata;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +26,7 @@ public class RecipeBook {
 
   /**
    * Adds a new recipe to the recipe book and saves the updated list to file.
-
+   *
    * @param recipe the Recipe object to add.
    */
   public void addRecipe(Recipe recipe) {
@@ -31,9 +36,8 @@ public class RecipeBook {
 
   /**
    * Returns a list of recipes that can be made with the available ingredients in the storage.
-
+   *
    * @param storage the FoodStorage object to check against.
-
    * @return a list of recipes that can be made.
    */
   public List<Recipe> suggestRecipes(FoodStorage storage) {
@@ -49,9 +53,8 @@ public class RecipeBook {
   /**
    * Returns a list of recipes that can be made partially
    * with the available ingredients in the storage.
-
+   *
    * @param storage the FoodStorage object to check against.
-
    * @return a list of recipes that can be made partially.
    */
   public List<Recipe> suggestPartialRecipes(FoodStorage storage) {
@@ -73,7 +76,7 @@ public class RecipeBook {
 
   /**
    * Returns the list of all recipes in the recipe book.
-
+   *
    * @return List of Recipe objects.
    */
   public List<Recipe> getRecipes() {

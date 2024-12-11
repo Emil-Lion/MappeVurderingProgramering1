@@ -25,7 +25,7 @@ The project is structured as a Maven project. The source files are stored in the
 
 [//]: # (TODO: Include a link to your GitHub repository here.)
 
-[GitHub Repository Link](https://github.com/your-repo-url)
+[GitHub Repository Link](https://github.com/Emil-Lion/MappeVurderingProgramering1.git)
 
 
 ## How to run the project
